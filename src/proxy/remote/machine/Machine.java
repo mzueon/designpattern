@@ -10,14 +10,16 @@ public class Machine {
     State soldOutState;
     State soldState;
     int count = 0;
+    String location;
 
-    public Machine(int stock) {
+    public Machine(String location, int stock) {
         hasCoinState = new HasCoinState(this);
         noCoinState = new NoCoinState(this);
         soldOutState = new SoldOutState(this);
         soldState = new SoldState(this);
 
         this.count = stock;
+        this.location = location;
 
         if (stock > 0){
             state = noCoinState;
@@ -50,6 +52,10 @@ public class Machine {
 
     public State getState() {
         return state;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public void setState(State state) {
